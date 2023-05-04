@@ -1,0 +1,15 @@
+1. Adding firebase to android
+2. Dar de alta la aplicacion descargar el archivo de firebase y seguir los cambios en las instrucciones
+3. Agregar como version minima 21
+4. dependencies:
+  cloud_firestore: ^4.5.3
+  cupertino_icons: ^1.0.2
+  firebase_auth: ^4.4.2
+  firebase_core: ^2.10.0
+  shared_preferences: ^2.0.15
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.0.15
+
+5. en el main iniciar los servicios de firebase
+
