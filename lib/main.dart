@@ -15,7 +15,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -23,16 +23,19 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isSignedIn = false;
+
   @override
   void initState() {
     super.initState();
-    getUserLoggetInStatus();
+    getUserLoggedInStatus();
   }
 
-  getUserLoggetInStatus() async {
+  getUserLoggedInStatus() async {
     await HelperFunction.getUserLoggedInStatus().then((value) {
       if (value != null) {
-        _isSignedIn = value;
+        setState(() {
+          _isSignedIn = value;
+        });
       }
     });
   }
@@ -40,11 +43,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            primaryColor: Constants().primaryColor,
-            scaffoldBackgroundColor: Colors.white),
-        home: _isSignedIn ? HomePage() : LoginPage());
+      theme: ThemeData(
+          primaryColor: Constants().primaryColor,
+          scaffoldBackgroundColor: Colors.white),
+      debugShowCheckedModeBanner: false,
+      home: _isSignedIn ? const HomePage() : const LoginPage(),
+    );
   }
 }
